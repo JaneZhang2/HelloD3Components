@@ -20,6 +20,8 @@
   "homepage": "https://github.com/JaneZhang2/HelloRxJS#readme",
   "dependencies": {
     "babel-polyfill": "^6.7.4",
+    "d3": "^3.5.17",
+    "lodash": "^4.13.1",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
     "react-router": "^2.5.2",
