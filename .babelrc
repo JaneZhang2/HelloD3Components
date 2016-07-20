@@ -4,5 +4,14 @@
     "react",
     "stage-2"
   ],
-  "plugins": []
+  "plugins": [
+    [
+      "transform-replace-object-assign", //material-ui
+      "simple-assign" //material-ui
+    ],
+    "transform-dev-warning", //material-ui
+    "transform-object-rest-spread",
+    "transform-class-properties", //support static properties in class
+    "transform-async-to-generator" //for async await used in server forlder
+  ]
 }

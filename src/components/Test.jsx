@@ -17,7 +17,7 @@ export default class Test extends React.Component {
     componentDidMount() {
         let {value} = this.state;
 
-        const data = [
+        const dataset = [
             {
                 "id": 1,
                 "value": 10
@@ -59,16 +59,16 @@ export default class Test extends React.Component {
             }
         ];
 
-        var maximum = _.maxBy(data, 'value').value;
-
         //1、半径比例尺
         var radiusScale = d3.scale.linear()
-            .domain([0, maximum])
+            .domain([0, d3.max(dataset, d => d.value)])
             .range([0, 30]);//TODO:考虑响应式
 
+        //console.log(_.sortBy(dataset, 'value'));
+
         //2、颜色比例尺(TODO:分量比例尺?序列比例尺?)
-        var fillScale = d3.scale.ordinal()//最大三个才红色
-            .domain([0, 100])
+        var fillScale = d3.scale.quantile()//最大三个才红色
+            .domain([0, d3.max(dataset, d => d.value)])
             .range(['rgba(34,195,247,.5)', 'rgba(249,120,105,.8)']);
 
         //3、发散圈
