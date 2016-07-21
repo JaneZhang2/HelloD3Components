@@ -1,4 +1,5 @@
 import React from 'react';
+import Title from 'react-title-component';
 
 class Test extends React.Component {
     constructor(props) {
@@ -7,7 +8,9 @@ class Test extends React.Component {
 
     render() {
         return (
-            <div id="test">cccc
+            <div>
+                xxx
+                <Title render='ceshi'/>
             </div>
         );
     }

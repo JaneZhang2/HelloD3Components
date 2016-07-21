@@ -18,37 +18,37 @@ class Master extends Component {
     static propTypes = {
         children: PropTypes.node,
         location: PropTypes.object,
-        width: PropTypes.number.isRequired,
+        width: PropTypes.number.isRequired
     };
 
     static contextTypes = {
-        router: PropTypes.object.isRequired,
+        router: PropTypes.object.isRequired
     };
 
     static childContextTypes = {
-        muiTheme: PropTypes.object,
+        muiTheme: PropTypes.object
     };
 
     state = {
-        navDrawerOpen: false,
+        navDrawerOpen: false
     };
 
     getChildContext() {
         return {
-            muiTheme: this.state.muiTheme,
+            muiTheme: this.state.muiTheme
         };
     }
 
     componentWillMount() {
         this.setState({
-            muiTheme: getMuiTheme(),
+            muiTheme: getMuiTheme()
         });
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
         const newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
         this.setState({
-            muiTheme: newMuiTheme,
+            muiTheme: newMuiTheme
         });
     }
 
@@ -58,30 +58,30 @@ class Master extends Component {
                 position: 'fixed',
                 // Needed to overlap the examples
                 zIndex: this.state.muiTheme.zIndex.appBar + 1,
-                top: 0,
+                top: 0
             },
             root: {
                 paddingTop: spacing.desktopKeylineIncrement,
-                minHeight: 400,
+                minHeight: 400
             },
             content: {
-                margin: spacing.desktopGutter,
+                margin: spacing.desktopGutter
             },
             contentWhenMedium: {
-                margin: `${spacing.desktopGutter * 2}px ${spacing.desktopGutter * 3}px`,
+                margin: `${spacing.desktopGutter * 2}px ${spacing.desktopGutter * 3}px`
             },
             footer: {
                 backgroundColor: grey900,
-                textAlign: 'center',
+                textAlign: 'center'
             },
             a: {
-                color: darkWhite,
+                color: darkWhite
             },
             p: {
                 margin: '0 auto',
                 padding: 0,
                 color: lightWhite,
-                maxWidth: 356,
+                maxWidth: 356
             },
             browserstack: {
                 display: 'flex',
@@ -91,13 +91,13 @@ class Master extends Component {
                 padding: 0,
                 color: lightWhite,
                 lineHeight: '25px',
-                fontSize: 12,
+                fontSize: 12
             },
             browserstackLogo: {
                 margin: '0 3px',
             },
             iconButton: {
-                color: darkWhite,
+                color: darkWhite
             },
         };
 
@@ -110,26 +110,26 @@ class Master extends Component {
 
     handleTouchTapLeftIconButton = () => {
         this.setState({
-            navDrawerOpen: !this.state.navDrawerOpen,
+            navDrawerOpen: !this.state.navDrawerOpen
         });
     };
 
     handleChangeRequestNavDrawer = (open) => {
         this.setState({
-            navDrawerOpen: open,
+            navDrawerOpen: open
         });
     };
 
     handleChangeList = (event, value) => {
         this.context.router.push(value);
         this.setState({
-            navDrawerOpen: false,
+            navDrawerOpen: false
         });
     };
 
     handleChangeMuiTheme = (muiTheme) => {
         this.setState({
-            muiTheme: muiTheme,
+            muiTheme: muiTheme
         });
     };
 
@@ -172,31 +172,14 @@ class Master extends Component {
 
         return (
             <div>
-                <Title render="Material-UI"/>
+                <Title render=""/>
                 <AppBar
                     onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
                     title={title}
                     zDepth={0}
-                    iconElementRight={
-            <IconButton
-              iconClassName="muidocs-icon-custom-github"
-              href="https://github.com/callemall/material-ui"
-            />
-          }
                     style={styles.appBar}
                     showMenuIconButton={showMenuIconButton}
-                    onTouchTap={()=>{}}
                 />
-                {title !== '' ?
-                    <div style={prepareStyles(styles.root)}>
-                        <div style={prepareStyles(styles.content)}>
-                            {React.cloneElement(children, {
-                                onChangeMuiTheme: this.handleChangeMuiTheme,
-                            })}
-                        </div>
-                    </div> :
-                    children
-                }
                 <AppNavDrawer
                     style={styles.navDrawer}
                     location={location}
@@ -205,33 +188,8 @@ class Master extends Component {
                     onChangeList={this.handleChangeList}
                     open={navDrawerOpen}
                 />
-                <FullWidthSection style={styles.footer}>
-                    <p style={prepareStyles(styles.p)}>
-                        {'Hand crafted with love by the engineers at '}
-                        <a style={styles.a} href="http://www.call-em-all.com/Careers">
-                            Call-Em-All
-                        </a>
-                        {' and our awesome '}
-                        <a
-                            style={prepareStyles(styles.a)}
-                            href="https://github.com/callemall/material-ui/graphs/contributors"
-                        >
-                            contributors
-                        </a>.
-                    </p>
-                    <IconButton
-                        iconStyle={styles.iconButton}
-                        iconClassName="muidocs-icon-custom-github"
-                        href="https://github.com/callemall/material-ui"
-                    />
-                    <p style={prepareStyles(styles.browserstack)}>
-                        {'Thank you to '}
-                        <a href="https://www.browserstack.com" style={prepareStyles(styles.browserstackLogo)}
-                           target="_blank">
-                            <img src="http://www.browserstack.com/images/layout/logo.png" height="25" width="auto"/>
-                        </a>
-                        {' for providing real browser testing infrastructure.'}
-                    </p>
+                <FullWidthSection>
+                    {children}
                 </FullWidthSection>
             </div>
         );
