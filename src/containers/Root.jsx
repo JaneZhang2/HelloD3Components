@@ -1,9 +1,8 @@
 import React from 'react';
 import {Router, Route, IndexRedirect} from 'react-router'
 
-import Master from '../components/Master.jsx'
-import App from './App.jsx'
-import Test from '../components/Test2.jsx'
+import Master from '../components/Master/index.jsx'
+import Test from '../components/PageRisks/index.jsx'
 
 const Root = (props) => {
     let {history} = props;

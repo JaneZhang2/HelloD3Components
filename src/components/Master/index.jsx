@@ -5,10 +5,12 @@ import IconButton from 'material-ui/IconButton';
 import spacing from 'material-ui/styles/spacing';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
-import AppNavDrawer from './AppNavDrawer';
-import FullWidthSection from './FullWidthSection';
+import AppNavDrawer from '../AppNavDrawer';
+import FullWidthSection from '../FullWidthSection';
 import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import './index.css';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -171,7 +173,7 @@ class Master extends Component {
         }
 
         return (
-            <div>
+            <div className="wrapper">
                 <Title render=""/>
                 <AppBar
                     onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
@@ -188,7 +190,7 @@ class Master extends Component {
                     onChangeList={this.handleChangeList}
                     open={navDrawerOpen}
                 />
-                <FullWidthSection>
+                <FullWidthSection className="wrapper">
                     {children}
                 </FullWidthSection>
             </div>
