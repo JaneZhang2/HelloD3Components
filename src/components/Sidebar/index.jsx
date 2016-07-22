@@ -5,29 +5,21 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import {spacing, typography, zIndex} from 'material-ui/styles';
-import {cyan500} from 'material-ui/styles/colors';
+import {spacing, zIndex} from 'material-ui/styles';
+import Avatar from 'material-ui/Avatar';
+
+import './index.scss';
 
 const SelectableList = MakeSelectable(List);
 
 const styles = {
-    logo: {
-        cursor: 'pointer',
-        fontSize: 24,
-        color: typography.textFullWhite,
-        lineHeight: `${spacing.desktopKeylineIncrement}px`,
-        fontWeight: typography.fontWeightLight,
-        backgroundColor: cyan500,
-        paddingLeft: spacing.desktopGutter,
-        marginBottom: 8,
-    },
     version: {
         paddingLeft: spacing.desktopGutterLess,
         fontSize: 16,
-    },
+    }
 };
 
-class AppNavDrawer extends Component {
+class Sidebar extends Component {
     static propTypes = {
         docked: PropTypes.bool.isRequired,
         location: PropTypes.object.isRequired,
@@ -51,7 +43,7 @@ class AppNavDrawer extends Component {
         const url = '/versions.json';
         const request = new XMLHttpRequest();
 
-        request.onreadystatechange = function() {
+        request.onreadystatechange = function () {
             if (request.readyState === 4 && request.status === 200) {
                 self.setState({
                     muiVersions: JSON.parse(request.responseText),
@@ -114,30 +106,35 @@ class AppNavDrawer extends Component {
 
         return (
             <Drawer
+                className="sidebar"
                 style={style}
                 docked={docked}
                 open={open}
                 onRequestChange={onRequestChangeNavDrawer}
                 containerStyle={{zIndex: zIndex.drawer - 100}}
             >
-                <div style={styles.logo} onTouchTap={this.handleTouchTapHeader}>
-                    Material-UI
+                <div className="logo" onTouchTap={this.handleTouchTapHeader}>
+                    WARDEN
                 </div>
-                <span style={styles.version}>Version:</span>
-                <DropDownMenu
-                    value={this.currentVersion()}
-                    onChange={this.handleVersionChange}
-                    maxHeight={300}
-                    style={{width: 181}}
-                >
-                    {this.state.muiVersions.map((version) => (
-                        <MenuItem
-                            key={version}
-                            value={version}
-                            primaryText={version}
-                        />
-                    ))}
-                </DropDownMenu>
+                <div className="avatar">
+                    <Avatar style={{margin:'auto'}}/>
+                </div>
+                <div>
+                    <DropDownMenu
+                        value={this.currentVersion()}
+                        onChange={this.handleVersionChange}
+                        maxHeight={300}
+                        style={{width: 181}}
+                    >
+                        {[1, 2, 3].map((version) => (
+                            <MenuItem
+                                key={version}
+                                value={version}
+                                primaryText={version}
+                            />
+                        ))}
+                    </DropDownMenu>
+                </div>
                 <SelectableList
                     value={location.pathname}
                     onChange={onChangeList}
@@ -410,8 +407,8 @@ class AppNavDrawer extends Component {
                     onChange={this.handleRequestChangeLink}
                 >
                     <Subheader>Resources</Subheader>
-                    <ListItem primaryText="GitHub" value="https://github.com/callemall/material-ui" />
-                    <ListItem primaryText="React" value="http://facebook.github.io/react" />
+                    <ListItem primaryText="GitHub" value="https://github.com/callemall/material-ui"/>
+                    <ListItem primaryText="React" value="http://facebook.github.io/react"/>
                     <ListItem
                         primaryText="Material Design"
                         value="https://www.google.com/design/spec/material-design/introduction.html"
@@ -422,4 +419,4 @@ class AppNavDrawer extends Component {
     }
 }
 
-export default AppNavDrawer;
+export default Sidebar;

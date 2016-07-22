@@ -5,12 +5,12 @@ import IconButton from 'material-ui/IconButton';
 import spacing from 'material-ui/styles/spacing';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
-import AppNavDrawer from '../AppNavDrawer';
+import Sidebar from '../Sidebar/index.jsx';
 import FullWidthSection from '../FullWidthSection';
 import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import './index.css';
+import './index.scss';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -182,7 +182,7 @@ class Master extends Component {
                     style={styles.appBar}
                     showMenuIconButton={showMenuIconButton}
                 />
-                <AppNavDrawer
+                <Sidebar
                     style={styles.navDrawer}
                     location={location}
                     docked={docked}
