@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Title from 'react-title-component';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
 import spacing from 'material-ui/styles/spacing';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
@@ -32,7 +31,7 @@ class Master extends Component {
     };
 
     state = {
-        navDrawerOpen: false
+        navDrawerOpen: true
     };
 
     getChildContext() {
@@ -124,15 +123,6 @@ class Master extends Component {
 
     handleChangeList = (event, value) => {
         this.context.router.push(value);
-        this.setState({
-            navDrawerOpen: false
-        });
-    };
-
-    handleChangeMuiTheme = (muiTheme) => {
-        this.setState({
-            muiTheme: muiTheme
-        });
     };
 
     render() {
@@ -141,57 +131,26 @@ class Master extends Component {
             children,
         } = this.props;
 
-        let {
-            navDrawerOpen,
-        } = this.state;
-
-        const {
-            prepareStyles,
-        } = this.state.muiTheme;
-
         const router = this.context.router;
         const styles = this.getStyles();
-        const title =
-            router.isActive('/get-started') ? 'Get Started' :
-                router.isActive('/customization') ? 'Customization' :
-                    router.isActive('/components') ? 'Components' :
-                        router.isActive('/discover-more') ? 'Discover More' : '';
 
-        let docked = false;
         let showMenuIconButton = true;
-
-        if (this.props.width === LARGE && title !== '') {
-            docked = true;
-            navDrawerOpen = true;
-            showMenuIconButton = false;
-
-            styles.navDrawer = {
-                zIndex: styles.appBar.zIndex - 1,
-            };
-            styles.root.paddingLeft = 256;
-            styles.footer.paddingLeft = 256;
-        }
 
         return (
             <div className="wrapper">
-                <Title render=""/>
+                <Title render="WARDEN"/>
                 <AppBar
                     onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
-                    title={title}
                     zDepth={0}
                     style={styles.appBar}
                     showMenuIconButton={showMenuIconButton}
                 />
+                {children}
                 <Sidebar
-                    style={styles.navDrawer}
                     location={location}
-                    docked={docked}
-                    onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
                     onChangeList={this.handleChangeList}
-                    open={navDrawerOpen}
                 />
-                <FullWidthSection className="wrapper">
-                    {children}
+                <FullWidthSection>
                 </FullWidthSection>
             </div>
         );

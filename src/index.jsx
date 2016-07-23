@@ -4,7 +4,7 @@ import {render} from 'react-dom'
 import Root from './containers/Root.jsx'
 import {hashHistory} from 'react-router'
 
-import 'normalize.css'
+// import 'normalize.css'
 import './index.scss'
 
 render(

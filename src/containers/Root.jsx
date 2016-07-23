@@ -2,7 +2,8 @@ import React from 'react';
 import {Router, Route, IndexRedirect} from 'react-router'
 
 import Master from '../components/Master/index.jsx'
-import Test from '../components/PageRisks/index.jsx'
+import Risks from '../components/PageRisks/index.jsx'
+import Help from '../components/Help/index.jsx'
 
 const Root = (props) => {
     let {history} = props;
@@ -10,8 +11,9 @@ const Root = (props) => {
     return (
         <Router history={history}>
             <Route path="/" components={Master}>
-                <IndexRedirect to="map" components={Test}/>
-                <Route path='map' components={Test}/>
+                <IndexRedirect to="help" components={Help}/>
+                <Route path='help' components={Help}/>
+                <Route path='risks' components={Risks}/>
             </Route>
         </Router>
     );
