@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.svg-view {
+    padding: 20px 30px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.x-axis-mark, .y-axis-mark {
+    stroke-width: 1px;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.y-axis-line {
+    width: 1px;
+    height: 100%;
+    fill: black;
+    transform: translate(-0.5px, 0);
+}
+
+.x-axis-line {
+    /*width: 100%;*/
+    height: 1px;
+    fill: black;
+}
+
+.x-axis-text {
+    font-size: 10px;
+    text-anchor: middle
+}
+
+.y-axis-text {
+    font-size: 10px;
+    text-anchor: end;
+    transform: translate(0, 4px);
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+line.net-line {
+    stroke-width: 1px;
+    stroke: #d9d9d9;
+    shape-rendering: crispEdges;
+}
+
+.rect-container {
+    margin: 20px;
+    border: 1px solid #d9d9d9;
+}
+
+.point-container .point-item {
+    fill: red;
+    opacity: 0.7;
+}
+
+.default-rect {
+    fill: steelblue;
+}
+
+.data-line {
+    stroke: red;
+    stroke-width: 2;
+    fill: none;
+}
+
+.line-circle {
+    fill: #fff;
+    stroke: red;
+}
+
+.map-bg {
+    width: 100%;
+    fill: transparent;
+}
+
+.map-province {
+    stroke: #a9a9a9;
+    stroke-width: 1;
+    fill: transparent;
+}
+
+.solid-point {
+    fill: red;
+    opacity: 0.7;
+}
+
+.point-pinch {
+    transition: r 0.2s ease;
+    -moz-transition: r 0.2s ease;
+    -webkit-transition: r 0.2s ease;
+    -o-transition: r 0.2s ease;
+}
+
+.hollow-circle {
+    fill: transparent;
+    stroke: red;
+    stroke-width: 1;
+}
+
+.overlay {
+    fill: transparent;
+    pointer-events: all;
+}
+.chart-cursor {
+    fill: red;
+    opacity: 0.4;
+    transition: x 0.3s ease;
+    -moz-transition: x 0.3s ease;
+    -webkit-transition: x 0.3s ease;
+    -o-transition: x 0.3s ease;
+    pointer-events: none;
+}
+
+.line-hover-cursor {
+    fill: black;
+    opacity: 0.5;
+    width: 1px;
+    transform: translate(-0.5px, 0);
+    transition: x 0.2s ease;
+    -moz-transition: x 0.2s ease;
+    -webkit-transition: x 0.2s ease;
+    -o-transition: x 0.2s ease;
+    pointer-events: none;
+}
+.hover-cursor {
+    fill: black;
+    opacity: 0.2;
+    transition: x 0.2s ease;
+    -moz-transition: x 0.2s ease;
+    -webkit-transition: x 0.2s ease;
+    -o-transition: x 0.2s ease;
+    pointer-events: none;
+}
+.rect-container rect {
+    cursor: pointer;
+}
+.svg-container {
+    position: relative;
+}
+.hover-text {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background: #000;
+    color: #fff;
+    padding: 5px;
+    opacity: 0.6;
+    border-radius: 3px;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: 12px;
+    z-index: 999;
+    transition: top 0.2s ease, left 0.2s ease;
+    -moz-transition: top 0.2s ease, left 0.2s ease;
+    -webkit-transition: top 0.2s ease, left 0.2s ease;
+    -o-transition: top 0.2s ease, left 0.2s ease;
+}
+.hover-text p i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.hover-text p {
+    line-height: 15px;
+}
+
+.data1 {
+    stroke: red;
+}
+.data2 {
+    stroke: blue
+}

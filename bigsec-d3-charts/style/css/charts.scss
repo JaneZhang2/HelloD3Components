@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+@import "../sass/var";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: #232835;
+}
+
+//图标类样式
+.svg-container {
+  position: relative;
+  background-color: $default-bg-color;
+  width: 100%;
+  height: 100%;
+  .svg-view, .data-zoom-view {
+    padding: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .axis-line, .grid-line {
+    stroke: $default-axis-color;
+  }
+  .x-axis-text {
+    font-size: 10px;
+    text-anchor: middle;
+    fill: $default-axis-text;
+  }
+  .y-left-axis-text {
+    font-size: 10px;
+    text-anchor: end;
+    fill: $default-axis-text;
+  }
+  .y-right-axis-text {
+    font-size: 10px;
+    text-anchor: start;
+    fill: $default-axis-text;
+  }
+  .line-circle {
+    fill: #fff;
+    stroke: $default-line-color;
+  }
+  .point-pinch {
+    cursor: pointer;
+    transition: r 0.2s ease;
+    -moz-transition: r 0.2s ease;
+    -webkit-transition: r 0.2s ease;
+    -o-transition: r 0.2s ease;
+  }
+  .line-hover-cursor {
+    fill: $default-data-zoom-color;
+    opacity: $default-data-zoom-fill-opacity;
+    //width: 1px;
+    transform: translate(-0.5px, 0);
+    transition: x 0.2s ease, y 0.2s ease;
+    -moz-transition: x 0.2s ease, y 0.2s ease;
+    -webkit-transition: x 0.2s ease, y 0.2s ease;
+    -o-transition: x 0.2s ease, y 0.2s ease;
+    pointer-events: none;
+  }
+  .chart-cursor {
+    fill: $default-click-cursor-color;
+    opacity: $default-click-cursor-opacity;
+    transition: x 0.3s ease, y 0.3s ease;
+    -moz-transition: x 0.3s ease, y 0.3s ease;
+    -webkit-transition: x 0.3s ease, y 0.3s ease;
+    -o-transition: x 0.3s ease, y 0.3s ease;
+    pointer-events: none;
+  }
+  .hover-cursor {
+    fill: $default-data-zoom-color;
+    opacity: $default-data-zoom-fill-opacity;
+    transition: x 0.2s ease, y 0.2s ease;
+    -moz-transition: x 0.2s ease, y 0.2s ease;
+    -webkit-transition: x 0.2s ease, y 0.2s ease;
+    -o-transition: x 0.2s ease, y 0.2s ease;
+    pointer-events: none;
+  }
+  .hover-text {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background: $default-hover-text-bg-color;
+    color: #000;
+    padding: 5px;
+    //opacity: $default-click-cursor-opacity;
+    border-radius: 3px;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: 12px;
+    z-index: 999;
+    //transition: top 0.2s ease, left 0.2s ease;
+    //-moz-transition: top 0.2s ease, left 0.2s ease;
+    //-webkit-transition: top 0.2s ease, left 0.2s ease;
+    //-o-transition: top 0.2s ease, left 0.2s ease;
+
+    p {
+      line-height: 15px;
+      i {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        margin-right: 5px;
+      }
+    }
+  }
+  .dash {
+    stroke-dasharray: 5, 5;
+  }
+
+  .data-zoom-border {
+    stroke: $default-line-color;
+    stroke-width: 1;
+    fill: none;
+  }
+  .data-zoom-area {
+    stroke: $default-data-zoom-color;
+    stroke-width: 1;
+    fill: $default-data-zoom-color;
+    opacity: $default-data-zoom-fill-opacity;
+  }
+  .data-zoom {
+    height: 100%;
+    fill: $default-data-zoom-color;
+    opacity: $default-data-zoom-fill-opacity;
+  }
+  .data-zoom-bar {
+    width: 10px;
+    height: 100%;
+    fill: $default-data-zoom-bar-color;
+  }
+  .data-line {
+    stroke: $default-line-color;
+    stroke-width: 1;
+    fill: none;
+  }
+  .data-bar {
+    cursor: pointer;
+    fill: $default-bar-color;
+  }
+  .data-scatter {
+    fill: $default-scatter-color;
+    opacity: $default-scatter-fill-opacity;
+  }
+  .map-background {
+    stroke: $default-map-border-color;
+    fill:$default-bg-map-fill-color;
+  }
+  .main-map {
+    stroke: $default-map-border-color;
+    fill:$default-main-map-fill-color;
+  }
+  .map-point {
+    .hollow-circle {
+      fill: transparent;
+      stroke: $default-main-scatter-color;
+      stroke-width: 1;
+    }
+    .solid-point {
+      fill: $default-main-scatter-color;
+      opacity: $default-main-scatter-opacity;
+    }
+  }
+  .map-bg {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+  }
+
+}
