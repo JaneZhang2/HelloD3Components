@@ -29,6 +29,8 @@
     "lodash": "^4.13.1",
     "material-ui": "^0.15.2",
     "normalize.css": "^4.2.0",
+    "rc-pagination": "^1.5.3",
+    "rc-table": "^4.4.0",
     "react-addons-create-fragment": "^15.2.1",
     "react-addons-transition-group": "^15.2.1",
     "react-event-listener": "^0.2.1",
@@ -36,7 +38,8 @@
     "react-title-component": "^1.0.1",
     "recompose": "^0.20.2",
     "simple-assign": "^0.1.0",
-    "warning": "^3.0.0"
+    "warning": "^3.0.0",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "app-module-path": "^1.0.6",
@@ -53,11 +56,13 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-1": "^6.5.0",
     "babel-runtime": "^6.6.1",
+    "body-parser": "^1.15.2",
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
     "enzyme": "^2.4.1",
+    "express": "^4.14.0",
     "file-loader": "^0.9.0",
     "fs-extra": "^0.30.0",
     "glob": "^7.0.3",
@@ -68,6 +73,9 @@
     "minimist": "^1.2.0",
     "node-sass": "^3.8.0",
     "nodemon": "^1.9.1",
+    "open-browser-webpack-plugin": "^0.0.2",
+    "postcss-loader": "^0.9.1",
+    "px2rem-loader": "^0.1.7",
     "react": "^15.2.1",
     "react-addons-test-utils": "^15.2.1",
     "react-dom": "^15.2.1",
@@ -75,11 +83,15 @@
     "react-tap-event-plugin": "^1.0.0",
     "recursive-readdir-sync": "^1.0.6",
     "rimraf": "^2.5.3",
+    "rucksack-css": "^0.8.6",
     "sass-loader": "^4.0.0",
     "sinon": "^1.17.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.12.1",
+    "webpack-merge": "^0.14.0"
   }
 }

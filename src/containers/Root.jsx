@@ -2,7 +2,7 @@ import React from 'react';
 import {Router, Route, IndexRedirect} from 'react-router'
 
 import Master from '../components/Master/index.jsx'
-import Risks from '../components/PageRisks/index.jsx'
+import Risks from './Risks'
 import Help from '../components/Help/index.jsx'
 
 const Root = (props) => {

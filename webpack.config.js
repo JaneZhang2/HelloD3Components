@@ -1,32 +1,100 @@
-var path = require('path'),
+const path = require('path'),
+    merge = require('webpack-merge'),
     webpack = require('webpack'),
-    HtmlwebpackPlugin = require('html-webpack-plugin');
+    rucksack = require('rucksack-css'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
-module.exports = {
-    context: path.join(__dirname, 'src'),
+
+const PATHS = {
+    src: path.join(__dirname, 'src'),
+    dist: path.join(__dirname, 'dist')
+};
+
+const common = {
+    context: PATHS.src,
     entry: {
-        vendor: './vendor',
-        bundle: './index.jsx'
+        bundle: './index'
     },
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: "bundle.js"
+        path: PATHS.dist
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
     module: {
         loaders: [
-            {test: /\.jsx$/, loaders: ['babel'], include: path.join(__dirname, 'src')},
-            {test: /\.scss$/, loader: 'style!css!sass'},
-            {test: /\.css$/, loader: 'style!css'}
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url?limit=8192'
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+                loader: 'url'
+            },
+            {
+                test: /\.jsx?$/,
+                loader: 'babel',
+                include: PATHS.src
+            }
         ]
     },
+    postcss: [
+        rucksack({
+            autoprefixer: true
+        })
+    ],
     plugins: [
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
-        new HtmlwebpackPlugin({
+        new HtmlWebpackPlugin({
             template: './index.html'
         })
     ]
 };
+
+module.exports = merge(common, {
+    output: {
+        publicPath: '/',
+        filename: '[name].js'
+    },
+    devtool: 'eval-source-map',
+    devServer: {
+        // contentBase: PATHS.build,
+        // Enable history API fallback so HTML5 History API based
+        // routing works. This is a good default that will come
+        // in handy in more complicated setups.
+        historyApiFallback: true,
+        hot: true,
+        inline: true,
+        progress: true,
+        // Display only errors to reduce the amount of output.
+        stats: 'errors-only',
+        // Parse host and port from env so this is easy to customize.
+        //
+        // If you use Vagrant or Cloud9, set
+        // host: process.env.HOST || '0.0.0.0';
+        //
+        // 0.0.0.0 is available to all network devices unlike default
+        // localhost
+        host: '0.0.0.0',
+        //process.env.HOST,
+        port: process.env.PORT
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.css$/,
+                loader: 'style!css'
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style!css!sass'
+            }
+        ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new OpenBrowserPlugin({url: 'http://localhost:8080'})
+    ]
+});
+
+//!postcss!px2rem?remUnit=75&remPrecision=8

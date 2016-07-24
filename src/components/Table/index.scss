@@ -1,0 +1,58 @@
+.warden-table-wrapper {
+  height: 100%;
+  overflow: auto;
+}
+
+.warden-body-table {
+  height: calc(100% - 40px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.warden-table {
+  background: #282E3C;
+  padding: 0 24px;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-family: Roboto, sans-serif;
+}
+
+.warden-table-row {
+  border-bottom: 1px solid #353D52;
+  color: #B6CCE4;
+  height: 24px;
+}
+
+.warden-row-column {
+  padding-left: 24px;
+  padding-right: 24px;
+  height: 30px;
+  text-align: left;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &.selected {
+    background: #e0e0e0;
+  }
+
+  &.hovered {
+    background: #f5f5f5;
+  }
+}
+
+.warden-table-header-column {
+  font-weight: normal;
+  font-size: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+  height: 40px;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #B6CCE4;
+  position: relative;
+}
