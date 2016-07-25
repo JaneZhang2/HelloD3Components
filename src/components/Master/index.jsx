@@ -59,7 +59,9 @@ class Master extends Component {
                 position: 'fixed',
                 // Needed to overlap the examples
                 zIndex: this.state.muiTheme.zIndex.appBar + 1,
-                top: 0
+                top: 0,
+                backgroundColor:'#484F62',
+                height:42
             },
             root: {
                 paddingTop: spacing.desktopKeylineIncrement,

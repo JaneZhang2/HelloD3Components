@@ -1,5 +1,5 @@
 .sidebar {
-
+background: black;
 }
 
 .sidebar .logo {
@@ -8,7 +8,7 @@
     color: #fff;
     line-height: 64px;
     font-weight: 300;
-    background: #00bcd4;
+    /*background: #00bcd4;*/
     padding-left: 24px;
     margin-bottom: 8px;
 }

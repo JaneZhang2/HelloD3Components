@@ -31,7 +31,7 @@ class Sidebar extends Component {
         } = this.props;
 
         return (
-            <Drawer className="sidebar" docked={true} open={true}>
+            <Drawer className="sidebar" containerStyle={{backgroundColor:'#1B1F2A'}} docked={true} open={true}>
                 <div className="logo">
                     WARDEN
                 </div>
@@ -55,7 +55,7 @@ class Sidebar extends Component {
                     value={location.pathname}
                     onChange={onChangeList}
                 >
-                    <ListItem primaryText="风险事件管理" value="/risks"/>
+                    <ListItem style={{color:'#fff'}} primaryText="风险事件管理" value="/risks"/>
                 </SelectableList>
             </Drawer>
         );

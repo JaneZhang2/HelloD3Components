@@ -9,16 +9,10 @@ import TableRow from '../../components/Table/TableRow'
 import TableRowColumn from '../../components/Table/TableRowColumn'
 import http from '../../common/http'
 
-const styles = {
-    propContainer: {
-        width: 200,
-        overflow: 'hidden',
-        margin: '20px auto 0',
-    },
-    propToggleHeader: {
-        margin: '20px auto 10px',
-    }
-};
+import List from '../../components/List/List';
+import ListItem from '../../components/List/ListItem';
+import Subheader from 'material-ui/Subheader';
+
 
 const items = [
     {
@@ -210,7 +204,7 @@ const style = {
     height: '100%',
     width: '100%',
     margin: 0,
-    // background: '#282E3C'
+    background: '#282E3C'
     // textAlign: 'center',
     // display: 'inline-block'
 };
@@ -218,23 +212,53 @@ const style = {
 class Risks extends Component {
     componentDidMount() {
         http.get('http://localhost:5003/api/platform/risks/statistics')
-            .then(function () {
-                alert('yyy')
+            .then(function (data) {
+                console.log(data);
             })
     }
 
     render() {
         return (
             <div className="risks container">
+                <Subheader style={{color:'#fff',fontSize:18}}>风险事件管理</Subheader>
                 <section>
                     <Paper id="rect" style={style} zDepth={1}>
                     </Paper>
                 </section>
                 <section>
-                    <Paper style={style} zDepth={1}/>
+                    <Paper style={style} zDepth={1}>
+                        <List>
+                            <Subheader style={{color:'#fff'}}>统计</Subheader>
+                            <ListItem primaryText="PAGE"/>
+                            <ListItem primaryText="HOST"/>
+                            <ListItem
+                                primaryText="USER"
+                                initiallyOpen={true}
+                                nestedItems={[
+                                  <ListItem
+                                    key={1}
+                                    primaryText="Starred"
+                                  />,
+                                  <ListItem
+                                    key={2}
+                                    primaryText="Sent Mail"
+                                    disabled={true}
+                                    nestedItems={[
+                                      <ListItem key={1} primaryText="Drafts" />
+                                    ]}
+                                  />
+                                ]}
+                            />
+                            <ListItem primaryText="DeviceID"/>
+                            <ListItem primaryText="触发策略"/>
+                            <ListItem primaryText="峰值请求速度"/>
+                            <ListItem primaryText="关联交易"/>
+                        </List>
+                    </Paper>
                 </section>
                 <section>
                     <Paper style={style} zDepth={1}>
+                        <Subheader style={{color:'#fff'}}>风险事件</Subheader>
                         <Table fixedHeader={true}>
                             <TableHeader
                                 displaySelectAll={false}
